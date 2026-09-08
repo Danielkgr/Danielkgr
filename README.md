@@ -8,7 +8,7 @@ I build and evaluate AI systems for legal work: the systems that put legal conte
 
 ## Selected work
 
-- **[auslawexam-bench](https://github.com/Danielkgr/auslawexam-bench)**: a reproducible benchmark of Australian legal reasoning for LLMs, whose headline metric is fabricated-citation rate, how often a model invents authority. Working prototype with 16 provisional questions, not yet lawyer-verified. The README says so.
+- **[auslawexam-bench](https://github.com/Danielkgr/auslawexam-bench)**: a reproducible benchmark of Australian legal reasoning for LLMs, whose headline metric is fabricated-citation rate, how often a model invents authority. Working prototype with 16 provisional questions.
   *The metric a law firm actually has exposure to, made measurable and repeatable.*
 
 - **[Contract-clause-classifier](https://github.com/Danielkgr/Contract-clause-classifier)**: zero-shot LLM vs fine-tuned transformer on the CUAD contract dataset, compared side by side on precision, recall, F1, cost and latency.
