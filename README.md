@@ -6,6 +6,8 @@ I build and evaluate AI systems for legal work: the systems that put legal conte
 
 > Most AI writing reports the systems that work. In legal practice the work that matters is the distance between a model that sounds authoritative and a model that is correct. That gap is where the risk sits, and it has to be measured, not assumed.
 
+![Python](https://img.shields.io/badge/Python-3.10+-24598f?logo=python&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-Next.js-3178C6?logo=typescript&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white) ![React](https://img.shields.io/badge/React-UI-61DAFB?logo=react&logoColor=black) ![Transformers](https://img.shields.io/badge/Transformers-HF-F7931E?logo=huggingface&logoColor=white) ![Pytest](https://img.shields.io/badge/Pytest-CI-0A4480?logo=pytest&logoColor=white)
+
 ## Selected work
 
 - **[auslawexam-bench](https://github.com/Danielkgr/auslawexam-bench)**: a reproducible benchmark of Australian legal reasoning for LLMs, whose headline metric is fabricated-citation rate, how often a model invents authority. Working prototype with 16 provisional questions.
@@ -22,6 +24,13 @@ I build and evaluate AI systems for legal work: the systems that put legal conte
 
 - **[local-llm-inference-notes](https://github.com/Danielkgr/local-llm-inference-notes)**: fifteen measurement investigations from one workstation, eight of them negative results, reported as plainly as the positive ones.
   *The measurement discipline the rest of the work leans on: pre-registered noise bands, same-sitting controls, published null results.*
+
+## What I bring to Legal Engineering
+
+- **Evaluation before deployment.** I build the measurement that says whether a model is safe to rely on, not just whether it sounds right: pre-registered noise bands, reproducible benchmarks, and fabricated-citation tracking. (auslawexam-bench, local-llm-inference-notes)
+- **Grounded retrieval for legal text.** RAG over statute and case law with the precision/recall evaluation to prove it, so an answer is traceable to the authority that supports it. (legal-rag-evaluation, auslawexam-bench)
+- **Provenance a regulated firm can audit.** Content-hashed items, append-only runs, contamination canaries, and version-controlled results: every number traces back to the code and the run that produced it. (auslawexam-bench)
+- **Full-stack delivery.** From data pipeline and model to the FastAPI backend and the React/TypeScript interface a practitioner uses, with CI. (legislation-monitor, Contract-clause-classifier, auslawexam-bench)
 
 ## How I work
 
