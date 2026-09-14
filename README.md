@@ -19,7 +19,7 @@ I build and evaluate AI systems for legal work: the systems that put legal conte
 - **[legislation-monitor](https://github.com/Danielkgr/legislation-monitor)**: automated change detection over Australian federal and Victorian legislation: scrapes, hashes, diffs, surfaces amendments, versioned.
   *A governed knowledge asset: legal knowledge that stays current without a manual review cycle.*
 
-- **[legal-rag-evaluation](https://github.com/Danielkgr/legal-rag-evaluation)**: retrieval over the Fair Work Act with precision/recall evaluation; the published results block is labelled illustrative sample output, pending a full committed run.
+- **[legal-rag-evaluation](https://github.com/Danielkgr/legal-rag-evaluation)**: hybrid retrieval over Australian statute with an OpenAI-compatible local backend.  One two-Act run is committed under `results/` with its provenance in `PROVENANCE.md`: the interpretable signal there is an eight-query routing probe, the auto-annotated scores are published as a caveat rather than a result, and the 10-test suite runs without torch.
   *The shape of a RAG evaluation for statutory work, stated plainly as to what it has and has not run.*
 
 - **[local-llm-inference-notes](https://github.com/Danielkgr/local-llm-inference-notes)**: fifteen measurement investigations from one workstation, eight of them negative results, reported as plainly as the positive ones.
