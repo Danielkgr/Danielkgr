@@ -22,11 +22,11 @@ I build AI systems for legal work, and the measurement that decides whether a mo
 
 | Project | What it is | Where it stands |
 |---|---|---|
-| [**auslawexam&#8209;bench**](https://github.com/Danielkgr/auslawexam-bench) | A reproducible benchmark of Australian legal reasoning for LLMs.  Its headline metric is how often a model invents a citation, which is the exposure a law firm actually carries. | 🟡 16 provisional questions and 87 tests.  The whole pipeline runs offline on a deterministic mock, and each commercial model slot switches on with its API key. |
+| [**auslawexam&#8209;bench**](https://github.com/Danielkgr/auslawexam-bench) | A reproducible benchmark of Australian legal reasoning for LLMs.  Its headline metric is how often a model invents a citation, which is the exposure a law firm actually carries. | 🟡 16 provisional questions and 87 tests.  The whole pipeline runs offline on a deterministic mock, and each commercial model slot switches on with its API key.  One real run of a local open-weight model is committed with its raw outputs. |
 | [**Contract&#8209;clause&#8209;classifier**](https://github.com/Danielkgr/Contract-clause-classifier) | A zero-shot LLM against a fine-tuned transformer on CUAD contract clauses, compared on precision, recall, F1, cost, and latency.  It is framed as a build-or-buy decision. | ⚪ Runs end to end on CUAD with a test model, with 28 tests.  No comparison run has been published yet. |
 | [**legislation&#8209;monitor**](https://github.com/Danielkgr/legislation-monitor) | Change detection over Commonwealth and Victorian legislation.  It fetches each Act on request, hashes the text, diffs it against the last version, and shows the amendment, so finding a change no longer means rereading the Act. | 🟡 Runs locally against both official registers, with 22 tests. |
 | [**legal&#8209;rag&#8209;evaluation**](https://github.com/Danielkgr/legal-rag-evaluation) | Hybrid retrieval over Australian statute, with a local OpenAI-compatible backend and an evaluation that says plainly what it has and has not run. | 🟡 One two-Act run is committed with its provenance.  A hand-written routing probe put the right Act first in 7 of 8 queries. |
-| [**local&#8209;llm&#8209;inference&#8209;notes**](https://github.com/Danielkgr/local-llm-inference-notes) | Fifteen measurement investigations from one workstation, eight of them negative.  The method the rest of the work leans on. | 🟢 Published, with the written method and the five tools that enforce it. |
+| [**local&#8209;llm&#8209;inference&#8209;notes**](https://github.com/Danielkgr/local-llm-inference-notes) | Sixteen measurement investigations from one workstation, eight of them negative.  The method the rest of the work leans on. | 🟢 Published, with the written method and the five tools that enforce it. |
 
 <br>
 
@@ -45,6 +45,6 @@ I build AI systems for legal work, and the measurement that decides whether a mo
 
 I declare noise bands and success criteria before a run.  A band chosen after seeing the numbers is a rationalisation.  The rules are written down in [METHOD.md](https://github.com/Danielkgr/local-llm-inference-notes/blob/HEAD/METHOD.md) for the inference notes and [METHODOLOGY.md](https://github.com/Danielkgr/auslawexam-bench/blob/HEAD/paper/METHODOLOGY.md) for the benchmark.
 
-Negative results get published.  Eight of the fifteen inference investigations end in no, and several of them overturned a claim the repository had already made.
+Negative results get published.  Eight of the sixteen inference investigations end in no, and several of them overturned a claim the repository had already made.
 
 Every benchmark, prompt, and published result is a commit, so any number in a README traces back to the code and the run that produced it.
