@@ -2,7 +2,7 @@
 
 # Daniel Glynn-Roe
 
-### Lawyer and tinkerer in Melbourne
+### Lawyer and AI Technical Engineer in Melbourne
 
 I build AI systems for legal work, and the measurement that decides whether a model can be trusted with it.
 
