@@ -6,7 +6,16 @@
 
 I build AI systems for legal work and test whether they are accurate enough to rely on.
 
-Python · TypeScript · Claude API · FastAPI · React · Next.js · Hugging Face Transformers · pytest
+[Website](https://danielkgr.github.io/) · [Projects](#projects) · [Skills](#skills) · [How I work](#how-i-work)
+
+![Python](https://img.shields.io/badge/Python-24292f?style=flat-square&logo=python&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-24292f?style=flat-square&logo=typescript&logoColor=white)
+![Claude API](https://img.shields.io/badge/Claude_API-24292f?style=flat-square&logo=anthropic&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-24292f?style=flat-square&logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/React-24292f?style=flat-square&logo=react&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-24292f?style=flat-square&logo=nextdotjs&logoColor=white)
+![Hugging Face Transformers](https://img.shields.io/badge/Transformers-24292f?style=flat-square&logo=huggingface&logoColor=white)
+![pytest](https://img.shields.io/badge/pytest-24292f?style=flat-square&logo=pytest&logoColor=white)
 
 </div>
 
@@ -14,32 +23,82 @@ Python · TypeScript · Claude API · FastAPI · React · Next.js · Hugging Fac
 
 ## About
 
-Law firms ask three questions before they adopt an AI tool:
+Law firms ask three questions before they adopt an AI tool.  Each project below answers at least one of them.
 
-1. **Accuracy.**  Is the model accurate enough for this work, measured on the firm's own tasks?
-2. **Confidentiality.**  Where does confidential and privileged client material go, and who can see it?
-3. **Cost.**  What does each answer cost?
+| Accuracy | Confidentiality | Cost |
+|---|---|---|
+| Is the model accurate enough for this work, measured on the firm's own tasks? | Where does confidential and privileged client material go, and who can see it? | What does each answer cost? |
 
-Each project below answers at least one of them.  Every README states what the tool does, what it cannot do, and which of its results I have measured.
+Every README states what the tool does, what it cannot do, and which of its results I have measured.
 
 ## Projects
 
-| Project | What it does | Status |
-|---|---|---|
-| [**intake&#8209;agent**](https://github.com/Danielkgr/intake-agent) | Triages new client enquiries with Claude.  The agent checks conflicts through a tool, applies the firm's intake policy, and drafts a summary and a holding reply.  Code runs the conflict check, the routing rules, and an advice check on the reply, and sends every doubtful case to a person. | **Prototype.**  One run on the live Claude API scored 30 of 30 on every field across 30 synthetic enquiries, for $0.90.  An offline keyword baseline also scored 30 of 30, so the test set is too easy to separate the two.  The audit trail records every model turn, tool call, and cost. |
-| [**auslawexam&#8209;bench**](https://github.com/Danielkgr/auslawexam-bench) | Benchmarks LLMs on Australian legal reasoning.  The headline metric is how often a model invents a citation. | **Prototype.**  16 provisional questions, with every authority in the answer key checked against public sources.  The repository holds two runs with their raw outputs: Claude Opus 5.5 on the live API and a local open-weight model.  The checker's corpus is small, so the fabricated-citation rates are upper bounds until a legal review. |
-| [**contract&#8209;clause&#8209;classifier**](https://github.com/Danielkgr/contract-clause-classifier) | Compares a zero-shot LLM with a fine-tuned transformer on CUAD contract clauses, as a build-or-buy decision.  It reports precision, recall, F1, cost, and latency. | **Prototype.**  I measured both on the 56 CUAD test contracts.  Zero-shot Claude reached a macro F1 of 0.818 at six cents a contract.  A fine-tuned RoBERTa reached 0.736 and ran twelve times faster on a local GPU, with no contract text leaving the machine. |
-| [**legislation&#8209;monitor**](https://github.com/Danielkgr/legislation-monitor) | Detects changes to Commonwealth and Victorian legislation.  It fetches each Act on request and compares it with the last version.  Claude or a local model then writes a plain-English brief of the amendment, labelled with its source. | **Prototype.**  113 tests, with CI on every push.  I have not yet checked it against the live registers. |
-| [**legal&#8209;rag&#8209;evaluation**](https://github.com/Danielkgr/legal-rag-evaluation) | Runs hybrid retrieval over Australian statute.  Claude answers with citations to the exact sections it retrieved, and a checker flags any section reference the retrieved text does not support. | **Prototype.**  The repository holds one earlier run over two Acts, with its provenance.  A provisional set of 36 Fair Work Act questions is ready to run at section level. |
-| [**local&#8209;llm&#8209;inference&#8209;notes**](https://github.com/Danielkgr/local-llm-inference-notes) | Records twenty investigations into the local inference system I run on two machines: a workstation with two 32 GB Radeon AI PRO R9700 cards (64 GB of VRAM) and a Ryzen AI Max+ 395 mini PC.  The workstation serves eight model configurations, has four inference engines installed, and can keep one model loaded on each card.  Every change goes through a written qualification suite with a rollback plan.  The notes report what I measured, what I rejected, and where the measurement itself was wrong.  My other projects use the method written here. | **Published.**  I replaced the workstation's cards on 13 November 2026 and updated the repository's record of the setup on 16 November.  The investigations predate the new cards.  The largest model now runs across both cards with a 262k-token context.  A coding model on the second machine failed its full suite on 6 November, and the repository says so.  It includes the written method and five tools, all tested in CI. |
+| Project | In one line | Stage |
+|---|---|:--:|
+| [**intake&#8209;agent**](#intake-agent) | Triages new client enquiries with Claude and sends every doubtful case to a person | Prototype |
+| [**auslawexam&#8209;bench**](#auslawexam-bench) | Benchmarks LLMs on Australian legal reasoning and counts invented citations | Prototype |
+| [**contract&#8209;clause&#8209;classifier**](#contract-clause-classifier) | Compares a zero-shot LLM with a fine-tuned transformer on contract clauses | Prototype |
+| [**legislation&#8209;monitor**](#legislation-monitor) | Detects changes to Commonwealth and Victorian legislation and briefs each one | Prototype |
+| [**legal&#8209;rag&#8209;evaluation**](#legal-rag-evaluation) | Answers questions over Australian statute with checked section citations | Prototype |
+| [**local&#8209;llm&#8209;inference&#8209;notes**](#local-llm-inference-notes) | Records twenty investigations into the local inference system I run | Published |
+
+### [intake-agent](https://github.com/Danielkgr/intake-agent)
+
+Python · Claude API
+
+Triages new client enquiries with Claude.  The agent checks conflicts through a tool, applies the firm's intake policy, and drafts a summary and a holding reply.  Code runs the conflict check, the routing rules, and an advice check on the reply, and sends every doubtful case to a person.
+
+> **Prototype.**  One run on the live Claude API scored 30 of 30 on every field across 30 synthetic enquiries, for $0.90.  An offline keyword baseline also scored 30 of 30, so the test set is too easy to separate the two.  The audit trail records every model turn, tool call, and cost.
+
+### [auslawexam-bench](https://github.com/Danielkgr/auslawexam-bench)
+
+Python · FastAPI · React
+
+Benchmarks LLMs on Australian legal reasoning.  The headline metric is how often a model invents a citation.
+
+> **Prototype.**  16 provisional questions, with every authority in the answer key checked against public sources.  The repository holds two runs with their raw outputs: Claude Opus 5.5 on the live API and a local open-weight model.  The checker's corpus is small, so the fabricated-citation rates are upper bounds until a legal review.
+
+### [contract-clause-classifier](https://github.com/Danielkgr/contract-clause-classifier)
+
+Python · Hugging Face Transformers · Claude API
+
+Compares a zero-shot LLM with a fine-tuned transformer on CUAD contract clauses, as a build-or-buy decision.  It reports precision, recall, F1, cost, and latency.
+
+> **Prototype.**  I measured both on the 56 CUAD test contracts.  Zero-shot Claude reached a macro F1 of 0.818 at six cents a contract.  A fine-tuned RoBERTa reached 0.736 and ran twelve times faster on a local GPU, with no contract text leaving the machine.
+
+### [legislation-monitor](https://github.com/Danielkgr/legislation-monitor)
+
+TypeScript · Next.js · SQLite
+
+Detects changes to Commonwealth and Victorian legislation.  It fetches each Act on request and compares it with the last version.  Claude or a local model then writes a plain-English brief of the amendment, labelled with its source.
+
+> **Prototype.**  113 tests, with CI on every push.  I have not yet checked it against the live registers.
+
+### [legal-rag-evaluation](https://github.com/Danielkgr/legal-rag-evaluation)
+
+Python · Claude API
+
+Runs hybrid retrieval over Australian statute.  Claude answers with citations to the exact sections it retrieved, and a checker flags any section reference the retrieved text does not support.
+
+> **Prototype.**  The repository holds one earlier run over two Acts, with its provenance.  A provisional set of 36 Fair Work Act questions is ready to run at section level.
+
+### [local-llm-inference-notes](https://github.com/Danielkgr/local-llm-inference-notes)
+
+Markdown notes · Python and Bash tools
+
+Records twenty investigations into the local inference system I run on two machines: a workstation with two 32 GB Radeon AI PRO R9700 cards (64 GB of VRAM) and a Ryzen AI Max+ 395 mini PC.  The workstation serves eight model configurations, has four inference engines installed, and can keep one model loaded on each card.  Every change goes through a written qualification suite with a rollback plan.  The notes report what I measured, what I rejected, and where the measurement itself was wrong.  My other projects use the method written here.
+
+> **Published.**  I replaced the workstation's cards on 13 November 2026 and updated the repository's record of the setup on 16 November.  The investigations predate the new cards.  The largest model now runs across both cards with a 262k-token context.  A coding model on the second machine failed its full suite on 6 November, and the repository says so.  It includes the written method and five tools, all checked in CI.
 
 ## Skills
 
-- **Model evaluation.**  I build reproducible benchmarks, set noise bands before each run, and count invented citations.  See [auslawexam&#8209;bench](https://github.com/Danielkgr/auslawexam-bench) and [local&#8209;llm&#8209;inference&#8209;notes](https://github.com/Danielkgr/local-llm-inference-notes).
-- **Building with Claude.**  I build agents with strict tool use, safety rules enforced in code, cited answers, structured outputs, and prompt caching.  I track cost from each response's usage data.  Refusals and truncated answers go to a person.  See [intake&#8209;agent](https://github.com/Danielkgr/intake-agent), [legal&#8209;rag&#8209;evaluation](https://github.com/Danielkgr/legal-rag-evaluation), and [legislation&#8209;monitor](https://github.com/Danielkgr/legislation-monitor).
-- **Retrieval over legal text.**  I keep each statutory section whole and pair vector search with keyword matching, so every answer traces to the provision behind it.  See [legal&#8209;rag&#8209;evaluation](https://github.com/Danielkgr/legal-rag-evaluation).
-- **Audit and provenance.**  I use append-only runs, contamination canaries, and audit trails of every model turn and tool call.  Every score sits next to the raw output it came from.  See [auslawexam&#8209;bench](https://github.com/Danielkgr/auslawexam-bench) and [intake&#8209;agent](https://github.com/Danielkgr/intake-agent).
-- **Full-stack delivery.**  I build the data pipeline, the model, the backend, and the React and TypeScript interface.  See [auslawexam&#8209;bench](https://github.com/Danielkgr/auslawexam-bench) for FastAPI with React, [legislation&#8209;monitor](https://github.com/Danielkgr/legislation-monitor) for Next.js, and [contract&#8209;clause&#8209;classifier](https://github.com/Danielkgr/contract-clause-classifier) for the model pipeline.
+| Skill | What I do | Where to see it |
+|---|---|---|
+| **Model evaluation** | I build reproducible benchmarks, set noise bands before each run, and count invented citations. | [auslawexam&#8209;bench](https://github.com/Danielkgr/auslawexam-bench), [local&#8209;llm&#8209;inference&#8209;notes](https://github.com/Danielkgr/local-llm-inference-notes) |
+| **Building with Claude** | I build agents with strict tool use, safety rules enforced in code, cited answers, structured outputs, and prompt caching.  I track cost from each response's usage data.  Refusals and truncated answers go to a person. | [intake&#8209;agent](https://github.com/Danielkgr/intake-agent), [legal&#8209;rag&#8209;evaluation](https://github.com/Danielkgr/legal-rag-evaluation), [legislation&#8209;monitor](https://github.com/Danielkgr/legislation-monitor) |
+| **Retrieval over legal text** | I keep each statutory section whole and pair vector search with keyword matching, so every answer traces to the provision behind it. | [legal&#8209;rag&#8209;evaluation](https://github.com/Danielkgr/legal-rag-evaluation) |
+| **Audit and provenance** | I use append-only runs, contamination canaries, and audit trails of every model turn and tool call.  Every score sits next to the raw output it came from. | [auslawexam&#8209;bench](https://github.com/Danielkgr/auslawexam-bench), [intake&#8209;agent](https://github.com/Danielkgr/intake-agent) |
+| **Full-stack delivery** | I build the data pipeline, the model, the backend, and the React and TypeScript interface. | [auslawexam&#8209;bench](https://github.com/Danielkgr/auslawexam-bench) for FastAPI with React, [legislation&#8209;monitor](https://github.com/Danielkgr/legislation-monitor) for Next.js, [contract&#8209;clause&#8209;classifier](https://github.com/Danielkgr/contract-clause-classifier) for the model pipeline |
 
 ## How I work
 
