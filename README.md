@@ -84,11 +84,11 @@ Runs hybrid retrieval over Australian statute.  Claude answers with citations to
 
 ### [local-llm-inference-notes](https://github.com/Danielkgr/local-llm-inference-notes)
 
-Notes · Python tools
+Markdown notes · Python and Bash tools
 
 Records twenty investigations into the local inference system I run on two machines: a workstation with two 32 GB Radeon AI PRO R9700 cards (64 GB of VRAM) and a Ryzen AI Max+ 395 mini PC.  The workstation serves eight model configurations, has four inference engines installed, and can keep one model loaded on each card.  Every change goes through a written qualification suite with a rollback plan.  The notes report what I measured, what I rejected, and where the measurement itself was wrong.  My other projects use the method written here.
 
-> **Published.**  I replaced the workstation's cards on 13 November 2026 and updated the repository's record of the setup on 16 November.  The investigations predate the new cards.  The largest model now runs across both cards with a 262k-token context.  A coding model on the second machine failed its full suite on 6 November, and the repository says so.  It includes the written method and five tools, all tested in CI.
+> **Published.**  I replaced the workstation's cards on 13 November 2026 and updated the repository's record of the setup on 16 November.  The investigations predate the new cards.  The largest model now runs across both cards with a 262k-token context.  A coding model on the second machine failed its full suite on 6 November, and the repository says so.  It includes the written method and five tools, all checked in CI.
 
 ## Skills
 
