@@ -2,7 +2,9 @@
 
 # Daniel Glynn-Roe
 
-**Lawyer and AI Technical Engineer · Melbourne, Australia**
+**Dual-qualified lawyer and data scientist · AI Technical Engineer · Melbourne, Australia**
+
+I work as an AI Technical Engineer, delivering a tailored AI systems rollout across a national company.
 
 I build AI systems for legal work and test whether they are accurate enough to rely on.
 
